@@ -15,5 +15,16 @@ describe('Curry function generator', function() {
 
 describe('Curry function', function() {
   var add;
-  
+
+  beforeEach(function() {
+    add = function(a,b,c) {
+      return a+b+c
+    }
+  })
+
+  it('should return a proper result when called with original number of args', function() {
+     var curriedAdd = makeCurry(add)
+     expect(curriedAdd(1,6,3)).to.equal(10)
+  })
+
 })

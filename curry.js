@@ -3,7 +3,12 @@ var makeCurry = function(fn) {
     throw Error('bad salmon!')
   }
 
-  return function() {}
+  return function() {
+    // get the args
+    var args = [].slice.call(arguments)
+    // apply the args
+    return fn.apply(null, args)
+  }
 }
 
 module.exports = makeCurry
