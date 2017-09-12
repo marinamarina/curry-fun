@@ -3,9 +3,14 @@ var makeCurry = function(fn) {
     throw Error('bad salmon!')
   }
 
-  return function() {
+  return function curriedFn() {
     // get the args
     var args = [].slice.call(arguments)
+
+    if(args.length < fn.length) {
+      return curriedFn
+    }
+    
     // apply the args
     return fn.apply(null, args)
   }

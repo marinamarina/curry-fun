@@ -27,4 +27,9 @@ describe('Curry function', function() {
      expect(curriedAdd(1,6,3)).to.equal(10)
   })
 
+  it('should return a function when called with number of args less than original', function() {
+    var curriedAdd = makeCurry(add)
+    expect(curriedAdd(1,6)).to.be.a('function')
+ })
+
 })
