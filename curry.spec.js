@@ -32,4 +32,15 @@ describe('Curry function', function() {
     expect(curriedAdd(1,6)).to.be.a('function')
  })
 
+ it('should support creating multiple curry functions ', function() {
+  var curriedAddA = makeCurry(add)
+  var curriedAddB = makeCurry(add)
+  
+  expect(curriedAddA(1,6)).to.be.a('function')
+  expect(curriedAddA(1,6)(3)).to.eq(10)
+
+  expect(curriedAddB(1,6)).to.be.a('function')
+  expect(curriedAddB(1)(6)(3)).to.eq(10)
+})
+
 })

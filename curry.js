@@ -8,7 +8,9 @@ var makeCurry = function(fn) {
     var args = [].slice.call(arguments)
 
     if(args.length < fn.length) {
-      return curriedFn
+      return function() {
+        return curriedFn.apply(null, args.concat([].slice.call(arguments)))
+      }
     }
     
     // apply the args
